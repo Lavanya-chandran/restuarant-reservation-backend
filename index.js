@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./controllers/auth.js";
-import usersRoute from "./controllers/user.js";
 import userRoute from "./routes/users.js"
 import cookieParser from "cookie-parser";
 const app = express();
@@ -26,7 +25,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
-app.use("/api/users", usersRoute);
 app.use("/api/users", userRoute);
 
 app.use((err, req, res, next) => {
