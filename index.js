@@ -3,9 +3,9 @@ const express = require("express");
 const people = require("./controller/people");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const dotenv=require("dotenv")
 const app = express();
-
+dotenv.config();
 mongoose.set("strictQuery",true);
 mongoose.connect(process.env.MONGO)
 var db = mongoose.connection;
