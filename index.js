@@ -7,11 +7,10 @@ const dotenv=require("dotenv")
 const app = express();
 dotenv.config();
 mongoose.set("strictQuery",true);
-mongoose.connect(process.env.MONGO)
-var db = mongoose.connection;
-db.on("open",()=>console.log("Connected to DB"));
-db.on("error",()=>console.log("Error occured"))
-
+mongoose.connect("mongodb+srv://adibafaiyaz16:12345@perdetails.r9gaoey.mongodb.net/login",{
+  useNewUrlparser:true,useUnifiedTopology:true
+},).then(()=>console.log("Connected to DB"))
+.catch((err)=>console.log("error"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
