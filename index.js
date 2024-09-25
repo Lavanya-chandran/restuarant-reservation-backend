@@ -4,7 +4,8 @@ const people = require("./controller/people");
 const reserve=require("./controller/reserve");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
+const review = require("./controller/review");
 const app = express();
 
 
@@ -20,13 +21,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin:"https://golden-fork.netlify.app",
+    origin:"http://localhost:5173",
   }
 
 ));
 
 app.use("/people", people);
 app.use("/reserve",reserve);
+app.use("/review",review)
 app.listen(8800, () => {
   console.log("Server started at 8800");
 })
