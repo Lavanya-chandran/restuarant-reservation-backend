@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const people = require("./controller/people");
+const reserve=require("./controller/reserve");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv")
@@ -17,10 +18,15 @@ mongoose.connect(process.env.MONGO, {
   .catch((err) => console.log("error"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin:"https://golden-fork.netlify.app",
+  }
+
+));
 
 app.use("/people", people);
-
-app.listen(4000, () => {
-  console.log("Server started at 4000");
+app.use("/reserve",reserve);
+app.listen(8800, () => {
+  console.log("Server started at 8800");
 })
