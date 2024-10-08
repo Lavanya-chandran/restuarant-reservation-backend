@@ -35,6 +35,6 @@ app.use(cors({
 app.use("/people", people);
 app.use("/reserve",reserve);
 app.use("/review",review)
-app.listen(8900, () => {
-  console.log("Server started at 8900");
+app.listen(8800, () => {
+  console.log("Server started at 8800");
 })

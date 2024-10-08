@@ -6,16 +6,25 @@ const mongoose = require("mongoose");
 
 review.post("/", async function (req, res) {
     try {
-      const reviews = new reviewSchema({
-        reviewSchema: req.body.reviewSchema,
-      });
-      await reviews.save();
-      res.json({ message: " review successfully", reviews: reviews._id });
+      const {username,comments,rating} =req.body
+      if (!username||!comments||!rating)
+        return res.status(400).json({
+            message: "All fields are required",
+            success: false
+        });
+        return res.status(201).json({
+            message: "Account created successfully",
+            success: true
+        });
+
     } catch (error) {
-      res.status(500).json({ message: error.message });
+        console.log(error);
+        return res.status(500).json({
+            message: "An error occurred while signing in",
+            success: false
+        });
     }
-  });
-  
+})
 
 
 review.get("/reviews",(req,res)=>{
