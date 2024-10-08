@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO, {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://golden-fork.netlify.app'],
+  origin: ["http://localhost:5173", "http://golden-fork.netlify.app"],
   credentials: true,
 };
 
