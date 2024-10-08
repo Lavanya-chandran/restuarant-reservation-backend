@@ -19,12 +19,10 @@ mongoose.connect(process.env.MONGO, {
   .catch((err) => console.log("error"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const corsOptions = {
-  origin: ["http://localhost:5173", "https://golden-fork.netlify.app"],
-  credentials: true,
-};
 
-app.use(cors(corsOptions));
+
+app.use(cors({ origin: 'https://golden-fork.netlify.app' }));
+
 
 app.use("/people", people);
 app.use("/reserve",reserve);
