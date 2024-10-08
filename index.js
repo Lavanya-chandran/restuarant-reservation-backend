@@ -21,9 +21,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.use(cors({ origin: 'https://golden-fork.netlify.app' }));
+const allowedOrigins = ['http://localhost:5173', 'https://golden-fork.netlify.app'];
 
-
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 app.use("/people", people);
 app.use("/reserve",reserve);
 app.use("/review",review)

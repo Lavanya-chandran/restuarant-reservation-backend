@@ -52,7 +52,7 @@ review.route("/update-review/:id").get((req,res)=>{
 })
 
 
-review.delete("/delete-reserve/:id",(req,res)=>{
+review.delete("/delete-review/:id",(req,res)=>{
 reviewSchema.findByIdAndRemove(mongoose.Types,ObjectId(req.params,id),(err,data)=>{
         if(err){
             return err;
