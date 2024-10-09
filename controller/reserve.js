@@ -6,11 +6,11 @@ const mongoose = require("mongoose");
 
 reserve.post("/create", async function (req, res, data) {
     try {
-      const reser = new reserveSchema({
-        reserveSchema: req.body.reserveSchema,
-      });
+        const reser = new reserveSchema({
+            reserveSchema: req.body.reserveSchema,
+          });
       await reser.save();
-      res.json({ message: " reservation successfully", reser: reser._id&&data });
+      res.json({ message: " reservation successfully"});
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

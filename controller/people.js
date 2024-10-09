@@ -133,7 +133,7 @@ people.route("/update-people/:id").get((req,res)=>{
 
 
 people.delete("/delete-people/:id",(req,res)=>{
-    peopleSchema.findByIdAndRemove(mongoose.Types,ObjectId(req.params,id),(err,data)=>{
+    peopleSchema.findByIdAndRemove(mongoose.Types,ObjectId(req.params.id),(err,data)=>{
         if(err){
             return err;
         }
